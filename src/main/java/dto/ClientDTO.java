@@ -2,27 +2,28 @@ package dto;
 
 import java.time.LocalDate;
 
-import org.hibernate.validator.constraints.br.CPF;
-
 import com.devsuperior.desafio.entities.Client;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.PastOrPresent;
 
 public class ClientDTO {
 
 	private Long id;
 
-	@NotNull(message = "CPF é obrigatório")
+	@NotBlank(message = "Nome é obrigatório")
 	private String name;
 
-	@CPF
+	/*@CPF(message = "CPF inválido")
 	@NotNull(message = "CPF é obrigatório")
-	@Size(min = 11, max = 11, message = "CPF deve ter exatamente 11 dígitos")
+	@Size(min = 11, max = 11, message = "CPF deve ter exatamente 11 dígitos")*/
+	@NotBlank(message = "Campo requirido")
 	private String cpf;
 
 	private Double income;
 
+	@PastOrPresent(message = "Data inválida: a data não pode ser maior que hoje")
 	private LocalDate birthDate;
 
 	private Integer children;
