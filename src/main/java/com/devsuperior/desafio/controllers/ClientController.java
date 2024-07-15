@@ -21,7 +21,7 @@ import dto.ClientDTO;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/client")
+@RequestMapping(value = "/clients")
 public class ClientController {
 
 	@Autowired

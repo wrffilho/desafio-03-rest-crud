@@ -1,0 +1,10 @@
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Wanderlei Rocha Filho', '70450426041', 15000, '1986-09-27', 0);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Aline Bispo Rocha', '57216475070', 20000, '1982-02-22', 1);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Wanderlei Rocha', '96441237008', 8000, '1958-04-03', 2);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Zuleide Bispo Rocha', '41372287019', 15000, '1952-09-27', 2);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Joao Bispo', '44860537025', 1500, '1956-02-02', 0);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Paulo Victor', '92095272080', 11000, '1980-06-04', 0);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Alan Laranjeiras', '97242646022', 22000, '1975-01-26', 3);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Katia Cilene', '83292330068', 9000, '1979-09-03', 1);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Waldete Rocha', '43449462008', 3500.50, '1960-03-05', 3);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Mario Bispo dos Santos', '58765402006', 2000, '1960-02-22', 6);

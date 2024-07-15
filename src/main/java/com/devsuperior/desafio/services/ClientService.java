@@ -26,7 +26,7 @@ public class ClientService {
 		Optional<Client> optClient = repository.findById(id);
 		Client client = optClient.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
 
-		//Client client = optClient.get();
+		// Client client = optClient.get();
 		ClientDTO dto = new ClientDTO(client);
 
 		return dto;
@@ -51,15 +51,17 @@ public class ClientService {
 	}
 
 	@Transactional
-	public ClientDTO update(Long id, ClientDTO productDTO) {
+	public ClientDTO update(Long id, ClientDTO dto) {
+		checkClientExist(id);
 		Client entity = repository.getReferenceById(id);
-		copyDtoToEntity(productDTO, entity);
+		copyDtoToEntity(dto, entity);
 		Client result = repository.save(entity);
 		return new ClientDTO(result);
 	}
 
 	@Transactional
 	public void deleteById(Long id) {
+		checkClientExist(id);
 		repository.deleteById(id);
 	}
 
@@ -69,6 +71,12 @@ public class ClientService {
 		entity.setIncome(dto.getIncome());
 		entity.setBirthDate(dto.getBirthDate());
 		entity.setChildren(dto.getChildren());
+	}
+
+	private void checkClientExist(Long id) {
+		if (!repository.existsById(id)) {
+			throw new ResourceNotFoundException("Recurso não encontrado");
+		}
 	}
 
 }
