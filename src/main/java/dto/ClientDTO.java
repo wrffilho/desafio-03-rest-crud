@@ -1,24 +1,24 @@
-package com.devsuperior.desafio.entities;
+package dto;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.hibernate.validator.constraints.br.CPF;
 
-@Entity
-@Table(name = "tb_client")
-public class Client {
+import com.devsuperior.desafio.entities.Client;
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+public class ClientDTO {
+
 	private Long id;
 
+	@NotNull(message = "CPF é obrigatório")
 	private String name;
 
+	@CPF
+	@NotNull(message = "CPF é obrigatório")
+	@Size(min = 11, max = 11, message = "CPF deve ter exatamente 11 dígitos")
 	private String cpf;
 
 	private Double income;
@@ -27,11 +27,11 @@ public class Client {
 
 	private Integer children;
 
-	public Client() {
+	public ClientDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
+	public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,6 +39,16 @@ public class Client {
 		this.income = income;
 		this.birthDate = birthDate;
 		this.children = children;
+	}
+
+	public ClientDTO(Client client) {
+		super();
+		this.id = client.getId();
+		this.name = client.getName();
+		this.cpf = client.getCpf();
+		this.income = client.getIncome();
+		this.birthDate = client.getBirthDate();
+		this.children = client.getChildren();
 	}
 
 	public Long getId() {
@@ -77,8 +87,8 @@ public class Client {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birhDate) {
-		this.birthDate = birhDate;
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public Integer getChildren() {
@@ -88,24 +98,5 @@ public class Client {
 	public void setChildren(Integer children) {
 		this.children = children;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Client other = (Client) obj;
-		return Objects.equals(id, other.id);
-	}
-	
-	
 
 }
